@@ -1,0 +1,55 @@
+Business Requirements & Use Cases
+Primary Industry Fit
+This application is purpose-built for financial services, banking, insurance, and fintech organizations that must manage the intersection of risk, fraud, and regulatory compliance. It addresses the "three lines of defense" model common in regulated institutions.
+Use Case 1: Enterprise Risk Management (ERM)
+Who uses it: Chief Risk Officers, Risk Analysts, Portfolio Managers
+What the app does:
+Scores customers across multiple risk dimensions (credit, operational, liquidity, country) from CUSTOMER_RISK_SCORE
+Tracks risk trends over time via CALCULATION_DATE aggregation
+Identifies geographic risk concentration from CUSTOMER_MASTER country data
+Surfaces the top 15 highest-risk customers with a cross-table join
+Business requirement it fulfills: Continuous monitoring of portfolio-level risk exposure with drill-down to individual customer risk profiles. Supports risk appetite reporting and board-level governance.
+Use Case 2: Fraud Detection & Transaction Monitoring
+Who uses it: Fraud Analysts, Transaction Monitoring Teams, Financial Crime Units
+What the app does:
+Monitors transaction volumes and flags fraud alerts by type, severity, and status from FRAUD_ALERTS and TRANSACTION_DATA
+Calculates a real-time detection rate (alerts / transactions)
+Provides dual-axis filtering (severity + alert status) for triage workflows
+Shows country-level transaction exposure to identify high-risk jurisdictions
+Business requirement it fulfills: Operationalizing a fraud detection program with alert triage, severity prioritization, and trend analysis to reduce financial losses from unauthorized transactions.
+Use Case 3: AML/KYC Regulatory Compliance
+Who uses it: Compliance Officers, AML Analysts, KYC Operations Teams
+What the app does:
+Tracks AML alerts by detection rule from AML_ALERTS (identifies which rules fire most)
+Monitors KYC lifecycle: approved, pending, expired statuses from KYC_COMPLIANCE
+Logs and categorizes regulatory violations by regulation name and severity
+Produces a compliance scorecard ranking customers by compliance score (lowest first)
+Business requirement it fulfills: Demonstrating regulatory readiness to examiners (e.g., FinCEN, FCA, RBI). Proactively managing KYC renewals before expiry. Tracking AML rule effectiveness for model tuning.
+Use Case 4: Unified Alert Operations Center
+Who uses it: Operations Managers, Shift Supervisors, SOC Teams
+What the app does:
+Consolidates fraud alerts, AML alerts, and high-risk customer flags into a single view from three separate schemas
+Normalizes alert schemas across domains (common ALERT_ID, SEVERITY, STATUS structure)
+Provides segmented views (Fraud / AML / High Risk) with a single total-alerts KPI
+Business requirement it fulfills: Reducing "swivel-chair" monitoring where analysts switch between separate fraud, AML, and risk systems. Provides a single pane of glass for SLA tracking on alert resolution.
+Use Case 5: Investigation Case Management
+Who uses it: Investigation Managers, Case Analysts, Internal Audit
+What the app does:
+Tracks investigation lifecycle: Open, In Progress, Closed, Escalated from INVESTIGATION_CASES
+Measures investigator workload distribution (cases per analyst via ASSIGNED_TO)
+Supports filtering by case type and priority for workstream management
+Business requirement it fulfills: Managing investigation throughput, balancing analyst workloads, tracking escalation rates, and demonstrating regulatory SLA compliance for case resolution timelines.
+Use Case 6: Executive Reporting & Board Governance
+Who uses it: C-Suite, Board Members, Internal/External Auditors
+What the app does:
+Aggregates 13 scalar KPIs across all four domains (risk, fraud, compliance, investigations)
+Provides cross-domain charts for side-by-side comparison
+Offers five pre-built "Quick Query" pills for the most common board-level questions
+Includes an AI Copilot (Snowflake Cortex / Claude) for natural-language ad-hoc questions
+Business requirement it fulfills: Board-level risk governance reporting, audit examination preparation, and democratizing data access for non-technical stakeholders via the AI chat interface.
+Use Case 7: Document-Based Evidence & Reporting
+Who uses it: Compliance Analysts, Auditors, Regulatory Examiners
+What the app does:
+Accepts uploads of PDF, CSV, TXT, XLSX files for analysis
+Generates five cross-schema reports (customer risk summary, fraud exposure by country, KYC status, violation summary, case summary)
+Business requirement it fulfills: Supporting regulatory examination workflows where analysts must correlate structured database evidence with external documents (audit findings, regulatory filings, transaction logs).
